@@ -2,7 +2,7 @@ import pandas as pd
 from ..lib.constants import STG_MONGO_URL, PRD_MONGO_URL, DEV_MONGO_URL
 from ..lib.dbutils import runQuery
 from .mongo_queries import get_query
-from ..lib.slackUtils import send_slack_msg
+from ..lib.slackUtils import  send_slack_msg
 from ..lib.s3utils import writeToS3FromDataFrame
 from ..lib.constants import SLACK_ALERT_TEMPLATE
 
@@ -25,10 +25,11 @@ def products_dept_style():
             styledict['Style'] = stl
             styledict['Dept'] = styleinfo ['dept'][0]
             stylelist.append(styledict)
-        report = pd.DataFrame(stylelist)
-        if writeToS3FromDataFrame(report):
-            slack_data['filename'] = 'productstyle'
-            send_slack_msg(**slack_data)
+    report = pd.DataFrame(stylelist)
+    if writeToS3FromDataFrame(report):
+        slack_data['filename'] = 'productstyle'
+        send_slack_msg(**report)
+
 
 
 
