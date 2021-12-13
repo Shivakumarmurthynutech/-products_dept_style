@@ -6,13 +6,7 @@ from .mongo_queries import get_query
 from ..lib.s3utils import writeToS3FromDataFrame
 from ..lib.constants import SLACK_ALERT_TEMPLATE
 
-
-
-#
 # slack_data = SLACK_ALERT_TEMPLATE.copy()
-
-
-
 
 def products_dept_style():
     # slack_data['report'] = 'products_dept_style'
